@@ -13,7 +13,10 @@ app.use(express.static("public"))
 
 app.set("view engine","ejs")
 app.listen(2000, ()=>{console.log("http://localhost:"+2000)})
-app.get("/",(req,res)=>{
+app.get("/",(req, res)=>{
+    res.send("Bienvenue sur notre platform de téléchargement de video Youtub gratuitement")
+})
+app.get("/infovideo",(req,res)=>{
     const url_video = req.body.url
     ytdl.getInfo(url_video)
      .then(info =>{
