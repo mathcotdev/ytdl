@@ -33,7 +33,7 @@ app.post("/", (req,res)=>{
         const format = ytdl.chooseFormat(info.formats,{quality:""})
         const outputFile =`${info.videoDetails.title}.mp4`
         const outputStream = fs.createWriteStream(outputFile)
-        ytdl.downloadFromInfo(info, {format:format}).pipe(outputStream)
+        ytdl.downloadFromInfo(info, {format:format}).pipe()
         outputStream.on("finish", ()=>{
             res.status(200).json({info})
         })
